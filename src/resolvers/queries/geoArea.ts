@@ -7,7 +7,7 @@ async function geoArea(_: unknown, input: { id: string }): Promise<GeoArea> {
     const params = {
       TableName: process.env.ITEM_TABLE,
       Key: {
-        id: input.id,
+        itemId: input.id,
       },
     }
   
