@@ -22,7 +22,8 @@ async function updateItem(
     Key: {
       itemId: id,
     },
-    UpdateExpression: 'SET city = :city, county = :county, geoJson = :geoJson, geonameId = :geonameId, latitude = :latitude, longitude = :longitude, state = :state, zipCodes = :zipCodes',
+    ExpressionAttributeNames: {"#S": "state"},
+    UpdateExpression: 'SET city = :city, county = :county, geoJson = :geoJson, geonameId = :geonameId, latitude = :latitude, longitude = :longitude, #S = :state, zipCodes = :zipCodes',
     ExpressionAttributeValues: {
       ':city': city || null,
       ':state': state || null,
