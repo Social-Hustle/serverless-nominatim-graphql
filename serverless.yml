@@ -1,0 +1,51 @@
+service: serverless-nominatim-graphql # service name
+
+provider:
+  name: aws # deploy to AWS
+  runtime: nodejs12.x
+  versionFunctions: false # disable function versioning
+  region: us-east-1 # AWS region
+  stage: dev
+  environment:
+    ITEM_TABLE: GeoAreas
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.ITEM_TABLE}'
+
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  graphql:
+    handler: build/graphql.handler # Lambda handler path
+    events:
+      - http:
+          path: graphql # define Lambda endpoint
+          method: any # any HTTP method can access this Lambda
+          cors: true # enable CORS
+
+resources:
+  Resources:
+    ItemsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: itemId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: itemId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.ITEM_TABLE}
+
+plugins:
+  - serverless-offline
