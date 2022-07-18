@@ -7,7 +7,7 @@ provider:
   region: us-east-1 # AWS region
   stage: dev
   environment:
-    ITEM_TABLE: GeoAreas
+    ITEM_TABLE: ${self:service}-geoAreas-${self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
