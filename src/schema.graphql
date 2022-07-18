@@ -6,9 +6,34 @@ type Query {
 
 type Mutation {
   createGeoArea(input: CreateGeoAreaInput!): GeoArea
+  updateGeoArea(input: UpdateGeoAreaInput!): GeoArea
+  deleteGeoArea(input: DeleteGeoAreaInput): GeoArea
 }
 
 type GeoArea {
+  id: ID!
+  city: String!
+  state: String!
+  zipCodes: [String]!
+  county: String!
+  latitude: Float!
+  longitude: Float!
+  geoJson: JSON!
+  geonameId: Int!
+}
+
+input CreateGeoAreaInput {
+  city: String!
+  state: String!
+  zipCodes: [String]!
+  county: String!
+  latitude: Float!
+  longitude: Float!
+  geoJson: JSON!
+  geonameId: Int!
+}
+
+input UpdateGeoAreaInput {
   id: ID!
   city: String
   state: String
@@ -20,6 +45,6 @@ type GeoArea {
   geonameId: Int
 }
 
-input CreateGeoAreaInput {
-  city: String
+input DeleteGeoAreaInput {
+  id: ID!
 }

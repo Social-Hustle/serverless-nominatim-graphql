@@ -14,30 +14,53 @@ export type Scalars = {
 };
 
 export type CreateGeoAreaInput = {
-  city?: InputMaybe<Scalars['String']>;
+  city: Scalars['String'];
+  county: Scalars['String'];
+  geoJson: Scalars['JSON'];
+  geonameId: Scalars['Int'];
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
+  state: Scalars['String'];
+  zipCodes: Array<InputMaybe<Scalars['String']>>;
+};
+
+export type DeleteGeoAreaInput = {
+  id: Scalars['ID'];
 };
 
 export type GeoArea = {
   __typename?: 'GeoArea';
-  city?: Maybe<Scalars['String']>;
-  county?: Maybe<Scalars['String']>;
-  geoJson?: Maybe<Scalars['JSON']>;
-  geonameId?: Maybe<Scalars['Int']>;
+  city: Scalars['String'];
+  county: Scalars['String'];
+  geoJson: Scalars['JSON'];
+  geonameId: Scalars['Int'];
   id: Scalars['ID'];
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  state?: Maybe<Scalars['String']>;
-  zipCodes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
+  state: Scalars['String'];
+  zipCodes: Array<Maybe<Scalars['String']>>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
   createGeoArea?: Maybe<GeoArea>;
+  deleteGeoArea?: Maybe<GeoArea>;
+  updateGeoArea?: Maybe<GeoArea>;
 };
 
 
 export type MutationCreateGeoAreaArgs = {
   input: CreateGeoAreaInput;
+};
+
+
+export type MutationDeleteGeoAreaArgs = {
+  input?: InputMaybe<DeleteGeoAreaInput>;
+};
+
+
+export type MutationUpdateGeoAreaArgs = {
+  input: UpdateGeoAreaInput;
 };
 
 export type Query = {
@@ -48,4 +71,16 @@ export type Query = {
 
 export type QueryGeoAreaArgs = {
   id: Scalars['ID'];
+};
+
+export type UpdateGeoAreaInput = {
+  city?: InputMaybe<Scalars['String']>;
+  county?: InputMaybe<Scalars['String']>;
+  geoJson?: InputMaybe<Scalars['JSON']>;
+  geonameId?: InputMaybe<Scalars['Int']>;
+  id: Scalars['ID'];
+  latitude?: InputMaybe<Scalars['Float']>;
+  longitude?: InputMaybe<Scalars['Float']>;
+  state?: InputMaybe<Scalars['String']>;
+  zipCodes?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
