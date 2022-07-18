@@ -1,0 +1,25 @@
+scalar JSON
+
+type Query {
+  geoArea(id: ID!): GeoArea
+}
+
+type Mutation {
+  createGeoArea(input: CreateGeoAreaInput!): GeoArea
+}
+
+type GeoArea {
+  id: ID!
+  city: String
+  state: String
+  zipCodes: [String]
+  county: String
+  latitude: Float
+  longitude: Float
+  geoJson: JSON
+  geonameId: Int
+}
+
+input CreateGeoAreaInput {
+  city: String
+}
