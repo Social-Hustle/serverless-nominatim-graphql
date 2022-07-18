@@ -22,15 +22,15 @@ async function updateItem(
     Key: {
       itemId: id,
     },
-    UpdateExpression: 'SET content = :content',
+    UpdateExpression: 'SET city = :city, county = :county, geoJson = :geoJson, geonameId = :geonameId, latitude = :latitude, longitude = :longitude, state = :state, zipCodes = :zipCodes',
     ExpressionAttributeValues: {
       ':city': city || null,
       ':state': state || null,
-      ':zipCodes': zipCodes || [],
+      ':zipCodes': zipCodes || null,
       ':county': county || null,
       ':latitude': latitude || null,
       ':longitude': longitude || null,
-      ':geoJson': geoJson || {},
+      ':geoJson': geoJson || null,
       ':geonameId': geonameId || null,
     },
     ReturnValues: 'ALL_NEW',
