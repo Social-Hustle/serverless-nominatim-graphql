@@ -1,6 +1,7 @@
 import AWS from 'aws-sdk'
+import {GeoArea} from '../../generated/graphql'
 
-async function geoArea(_: unknown, input: { id: string }) {
+async function geoArea(_: unknown, input: { id: string }): Promise<GeoArea> {
     const dynamoDb = new AWS.DynamoDB.DocumentClient()
   
     const params = {
