@@ -12,8 +12,8 @@ async function createGeoArea(
   const params = {
     TableName: process.env.ITEM_TABLE,
     Item: {
+      ...input,
       itemId: id,
-      city: input.city,
     },
   }
 
