@@ -30,15 +30,15 @@ export type DeleteGeoAreaInput = {
 
 export type GeoArea = {
   __typename?: 'GeoArea';
-  city: Scalars['String'];
-  county: Scalars['String'];
-  geoJson: Scalars['JSON'];
-  geonameId: Scalars['Int'];
+  city?: Maybe<Scalars['String']>;
+  county?: Maybe<Scalars['String']>;
+  geoJson?: Maybe<Scalars['JSON']>;
+  geonameId?: Maybe<Scalars['Int']>;
   id: Scalars['ID'];
-  latitude: Scalars['Float'];
-  longitude: Scalars['Float'];
-  state: Scalars['String'];
-  zipCodes: Array<Maybe<Scalars['String']>>;
+  latitude?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
+  state?: Maybe<Scalars['String']>;
+  zipCodes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type Mutation = {

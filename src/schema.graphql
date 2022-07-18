@@ -12,14 +12,14 @@ type Mutation {
 
 type GeoArea {
   id: ID!
-  city: String!
-  state: String!
-  zipCodes: [String]!
-  county: String!
-  latitude: Float!
-  longitude: Float!
-  geoJson: JSON!
-  geonameId: Int!
+  city: String
+  state: String
+  zipCodes: [String]
+  county: String
+  latitude: Float
+  longitude: Float
+  geoJson: JSON
+  geonameId: Int
 }
 
 input CreateGeoAreaInput {
