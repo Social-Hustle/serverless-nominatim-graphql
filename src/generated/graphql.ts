@@ -10,6 +10,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  JSON: any;
 };
 
 export type CreateItemInput = {
@@ -18,6 +19,19 @@ export type CreateItemInput = {
 
 export type DeleteItemInput = {
   id: Scalars['ID'];
+};
+
+export type GeoArea = {
+  __typename?: 'GeoArea';
+  city?: Maybe<Scalars['String']>;
+  county?: Maybe<Scalars['String']>;
+  geoJson?: Maybe<Scalars['JSON']>;
+  geonameId?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
+  latitude?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
+  state?: Maybe<Scalars['String']>;
+  zipCodes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type Item = {
@@ -50,7 +64,13 @@ export type MutationUpdateItemArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  getGeoArea?: Maybe<GeoArea>;
   item?: Maybe<Item>;
+};
+
+
+export type QueryGetGeoAreaArgs = {
+  id: Scalars['ID'];
 };
 
 

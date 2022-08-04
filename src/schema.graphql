@@ -1,5 +1,8 @@
+scalar JSON
+
 type Query {
   item(id: ID!): Item
+  getGeoArea(id: ID!): GeoArea
 }
 
 type Mutation {
@@ -11,6 +14,18 @@ type Mutation {
 type Item {
   id: ID!
   content: String
+}
+
+type GeoArea {
+  id: ID!
+  city: String
+  state: String
+  zipCodes: [String]
+  county: String
+  latitude: Float
+  longitude: Float
+  geoJson: JSON
+  geonameId: Int
 }
 
 input CreateItemInput {
