@@ -1,15 +1,15 @@
-import geoArea from './queries/geoArea'
-import createGeoArea from './mutations/createGeoArea'
-import updateGeoArea from './mutations/updateGeoArea'
-import deleteGeoArea from './mutations/deleteGeoArea'
+import item from './queries/item'
+import createItem from './mutations/createItem'
+import updateItem from './mutations/updateItem'
+import deleteItem from './mutations/deleteItem'
 
 export default {
   Query: {
-    geoArea,
+    item,
   },
   Mutation: {
-    createGeoArea,
-    updateGeoArea,
-    deleteGeoArea,
+    createItem,
+    updateItem,
+    deleteItem,
   },
 }
