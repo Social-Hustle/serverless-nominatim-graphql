@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk'
-import { DeleteItemInput, Item } from '../../generated/schema'
+import { DeleteItemInput, Item } from '../../generated/graphql'
 
 async function deleteItem(
   _: unknown,

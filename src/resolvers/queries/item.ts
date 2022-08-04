@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk'
-import { Item } from '../../generated/schema'
+import { Item } from '../../generated/graphql'
 
 async function item(_: unknown, input: { id: string }): Promise<Item> {
   const dynamoDb = new AWS.DynamoDB.DocumentClient()

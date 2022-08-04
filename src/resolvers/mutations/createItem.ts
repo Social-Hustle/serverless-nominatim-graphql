@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk'
-import { CreateItemInput, Item } from '../../generated/schema'
+import { CreateItemInput, Item } from '../../generated/graphql'
 import { v4 } from 'uuid'
 
 async function createItem(

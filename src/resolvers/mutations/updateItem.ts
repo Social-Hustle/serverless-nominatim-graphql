@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk'
-import { UpdateItemInput, Item } from '../../generated/schema'
+import { UpdateItemInput, Item } from '../../generated/graphql'
 
 async function updateItem(
   _: unknown,
