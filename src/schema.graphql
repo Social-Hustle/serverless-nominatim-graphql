@@ -9,6 +9,111 @@ type Mutation {
   createItem(input: CreateItemInput!): Item
   updateItem(input: UpdateItemInput!): Item
   deleteItem(input: DeleteItemInput!): Item
+  createGeoArea(condition: ModelGeoAreaConditionInput, input: CreateGeoAreaInput!): GeoArea
+}
+
+enum ModelAttributeTypes {
+  _null
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+input ModelBooleanInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelFloatInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+}
+
+input ModelIDInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelSizeInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelStringInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  size: ModelSizeInput
+}
+
+input ModelGeoAreaConditionInput {
+  and: [ModelGeoAreaConditionInput]
+  not: ModelGeoAreaConditionInput
+  or: [ModelGeoAreaConditionInput]
+  city: ModelStringInput
+  state: ModelStringInput
+  zipCodes: ModelStringInput
+  county: ModelStringInput
+  latitude: ModelFloatInput
+  longitude: ModelFloatInput
+  geoJson: ModelStringInput
 }
 
 type Item {
@@ -25,7 +130,6 @@ type GeoArea {
   latitude: Float
   longitude: Float
   geoJson: JSON
-  geonameId: Int
 }
 
 input CreateItemInput {
@@ -39,4 +143,14 @@ input UpdateItemInput {
 
 input DeleteItemInput {
   id: ID!
+}
+
+input CreateGeoAreaInput {
+  city: String!
+  state: String!
+  zipCodes: [String]!
+  county: String!
+  latitude: Float!
+  longitude: Float!
+  geoJson: JSON!
 }

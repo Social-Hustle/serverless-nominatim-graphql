@@ -4,6 +4,7 @@ import updateItem from './mutations/updateItem'
 import deleteItem from './mutations/deleteItem'
 
 import getGeoArea from './queries/getGeoArea'
+import createGeoArea from './mutations/createGeoArea'
 
 export default {
   Query: {
@@ -14,5 +15,6 @@ export default {
     createItem,
     updateItem,
     deleteItem,
+    createGeoArea
   },
 }
