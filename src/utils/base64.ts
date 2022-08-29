@@ -1,7 +1,7 @@
-export const encode = (str: string): string => {
-  return btoa(str)
+export const encode = (val: any): string => {
+  return btoa(JSON.stringify(val))
 }
 
-export const decode = (str: string): string => {
-  return atob(str)
+export const decode = (str: string): any => {
+  return JSON.parse(atob(str))
 }
