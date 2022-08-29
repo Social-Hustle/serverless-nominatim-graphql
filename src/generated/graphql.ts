@@ -53,6 +53,11 @@ export type Cursor = {
   prevToken?: Maybe<Scalars['String']>;
 };
 
+export type CursorInput = {
+  nextToken?: InputMaybe<Scalars['String']>;
+  prevToken?: InputMaybe<Scalars['String']>;
+};
+
 export type DeleteItemInput = {
   id: Scalars['ID'];
 };
@@ -194,7 +199,7 @@ export type QueryItemArgs = {
 
 
 export type QueryListGeoAreasArgs = {
-  cursor?: InputMaybe<Cursor>;
+  cursor?: InputMaybe<CursorInput>;
   filter?: InputMaybe<GeoAreaFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
 };

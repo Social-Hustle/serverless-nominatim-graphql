@@ -5,17 +5,29 @@ type Cursor {
   nextToken: String
 }
 
+input CursorInput {
+  prevToken: String
+  nextToken: String
+}
+
 type Query {
   item(id: ID!): Item
   getGeoArea(id: ID!): GeoArea
-  listGeoAreas(filter: GeoAreaFilterInput, limit: Int, cursor: Cursor): GeoAreaConnection
+  listGeoAreas(
+    filter: GeoAreaFilterInput
+    limit: Int
+    cursor: CursorInput
+  ): GeoAreaConnection
 }
 
 type Mutation {
   createItem(input: CreateItemInput!): Item
   updateItem(input: UpdateItemInput!): Item
   deleteItem(input: DeleteItemInput!): Item
-  createGeoArea(condition: GeoAreaConditionInput, input: CreateGeoAreaInput!): GeoArea
+  createGeoArea(
+    condition: GeoAreaConditionInput
+    input: CreateGeoAreaInput!
+  ): GeoArea
 }
 
 enum AttributeTypes {
