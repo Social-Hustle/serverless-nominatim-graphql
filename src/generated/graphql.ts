@@ -13,6 +13,26 @@ export type Scalars = {
   JSON: any;
 };
 
+export enum AttributeTypes {
+  Null = '_null',
+  Binary = 'binary',
+  BinarySet = 'binarySet',
+  Bool = 'bool',
+  List = 'list',
+  Map = 'map',
+  Number = 'number',
+  NumberSet = 'numberSet',
+  String = 'string',
+  StringSet = 'stringSet'
+}
+
+export type BooleanInput = {
+  attributeExists?: InputMaybe<Scalars['Boolean']>;
+  attributeType?: InputMaybe<AttributeTypes>;
+  eq?: InputMaybe<Scalars['Boolean']>;
+  ne?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type CreateGeoAreaInput = {
   city: Scalars['String'];
   county: Scalars['String'];
@@ -27,8 +47,26 @@ export type CreateItemInput = {
   content: Scalars['String'];
 };
 
+export type Cursor = {
+  __typename?: 'Cursor';
+  nextToken?: Maybe<Scalars['String']>;
+  prevToken?: Maybe<Scalars['String']>;
+};
+
 export type DeleteItemInput = {
   id: Scalars['ID'];
+};
+
+export type FloatInput = {
+  attributeExists?: InputMaybe<Scalars['Boolean']>;
+  attributeType?: InputMaybe<AttributeTypes>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  eq?: InputMaybe<Scalars['Float']>;
+  ge?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  le?: InputMaybe<Scalars['Float']>;
+  lt?: InputMaybe<Scalars['Float']>;
+  ne?: InputMaybe<Scalars['Float']>;
 };
 
 export type GeoArea = {
@@ -43,60 +81,40 @@ export type GeoArea = {
   zipCodes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type Item = {
-  __typename?: 'Item';
-  content?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
+export type GeoAreaConditionInput = {
+  and?: InputMaybe<Array<InputMaybe<GeoAreaConditionInput>>>;
+  city?: InputMaybe<StringInput>;
+  county?: InputMaybe<StringInput>;
+  latitude?: InputMaybe<FloatInput>;
+  longitude?: InputMaybe<FloatInput>;
+  not?: InputMaybe<GeoAreaConditionInput>;
+  or?: InputMaybe<Array<InputMaybe<GeoAreaConditionInput>>>;
+  state?: InputMaybe<StringInput>;
+  zipCodes?: InputMaybe<StringInput>;
 };
 
-export enum ModelAttributeTypes {
-  Null = '_null',
-  Binary = 'binary',
-  BinarySet = 'binarySet',
-  Bool = 'bool',
-  List = 'list',
-  Map = 'map',
-  Number = 'number',
-  NumberSet = 'numberSet',
-  String = 'string',
-  StringSet = 'stringSet'
-}
+export type GeoAreaConnection = {
+  __typename?: 'GeoAreaConnection';
+  cursor?: Maybe<Cursor>;
+  items: Array<Maybe<GeoArea>>;
+  startedAt?: Maybe<Scalars['String']>;
+};
 
-export type ModelBooleanInput = {
+export type GeoAreaFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<GeoAreaFilterInput>>>;
+  city?: InputMaybe<StringInput>;
+  county?: InputMaybe<StringInput>;
+  latitude?: InputMaybe<FloatInput>;
+  longitude?: InputMaybe<FloatInput>;
+  not?: InputMaybe<GeoAreaFilterInput>;
+  or?: InputMaybe<Array<InputMaybe<GeoAreaFilterInput>>>;
+  state?: InputMaybe<StringInput>;
+  zipCodes?: InputMaybe<StringInput>;
+};
+
+export type IdInput = {
   attributeExists?: InputMaybe<Scalars['Boolean']>;
-  attributeType?: InputMaybe<ModelAttributeTypes>;
-  eq?: InputMaybe<Scalars['Boolean']>;
-  ne?: InputMaybe<Scalars['Boolean']>;
-};
-
-export type ModelFloatInput = {
-  attributeExists?: InputMaybe<Scalars['Boolean']>;
-  attributeType?: InputMaybe<ModelAttributeTypes>;
-  between?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  eq?: InputMaybe<Scalars['Float']>;
-  ge?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  le?: InputMaybe<Scalars['Float']>;
-  lt?: InputMaybe<Scalars['Float']>;
-  ne?: InputMaybe<Scalars['Float']>;
-};
-
-export type ModelGeoAreaConditionInput = {
-  and?: InputMaybe<Array<InputMaybe<ModelGeoAreaConditionInput>>>;
-  city?: InputMaybe<ModelStringInput>;
-  county?: InputMaybe<ModelStringInput>;
-  geoJson?: InputMaybe<ModelStringInput>;
-  latitude?: InputMaybe<ModelFloatInput>;
-  longitude?: InputMaybe<ModelFloatInput>;
-  not?: InputMaybe<ModelGeoAreaConditionInput>;
-  or?: InputMaybe<Array<InputMaybe<ModelGeoAreaConditionInput>>>;
-  state?: InputMaybe<ModelStringInput>;
-  zipCodes?: InputMaybe<ModelStringInput>;
-};
-
-export type ModelIdInput = {
-  attributeExists?: InputMaybe<Scalars['Boolean']>;
-  attributeType?: InputMaybe<ModelAttributeTypes>;
+  attributeType?: InputMaybe<AttributeTypes>;
   beginsWith?: InputMaybe<Scalars['ID']>;
   between?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   contains?: InputMaybe<Scalars['ID']>;
@@ -107,12 +125,12 @@ export type ModelIdInput = {
   lt?: InputMaybe<Scalars['ID']>;
   ne?: InputMaybe<Scalars['ID']>;
   notContains?: InputMaybe<Scalars['ID']>;
-  size?: InputMaybe<ModelSizeInput>;
+  size?: InputMaybe<SizeInput>;
 };
 
-export type ModelIntInput = {
+export type IntInput = {
   attributeExists?: InputMaybe<Scalars['Boolean']>;
-  attributeType?: InputMaybe<ModelAttributeTypes>;
+  attributeType?: InputMaybe<AttributeTypes>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
   eq?: InputMaybe<Scalars['Int']>;
   ge?: InputMaybe<Scalars['Int']>;
@@ -122,35 +140,10 @@ export type ModelIntInput = {
   ne?: InputMaybe<Scalars['Int']>;
 };
 
-export type ModelSizeInput = {
-  between?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  eq?: InputMaybe<Scalars['Int']>;
-  ge?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  le?: InputMaybe<Scalars['Int']>;
-  lt?: InputMaybe<Scalars['Int']>;
-  ne?: InputMaybe<Scalars['Int']>;
-};
-
-export enum ModelSortDirection {
-  Asc = 'ASC',
-  Desc = 'DESC'
-}
-
-export type ModelStringInput = {
-  attributeExists?: InputMaybe<Scalars['Boolean']>;
-  attributeType?: InputMaybe<ModelAttributeTypes>;
-  beginsWith?: InputMaybe<Scalars['String']>;
-  between?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  contains?: InputMaybe<Scalars['String']>;
-  eq?: InputMaybe<Scalars['String']>;
-  ge?: InputMaybe<Scalars['String']>;
-  gt?: InputMaybe<Scalars['String']>;
-  le?: InputMaybe<Scalars['String']>;
-  lt?: InputMaybe<Scalars['String']>;
-  ne?: InputMaybe<Scalars['String']>;
-  notContains?: InputMaybe<Scalars['String']>;
-  size?: InputMaybe<ModelSizeInput>;
+export type Item = {
+  __typename?: 'Item';
+  content?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
 };
 
 export type Mutation = {
@@ -163,7 +156,7 @@ export type Mutation = {
 
 
 export type MutationCreateGeoAreaArgs = {
-  condition?: InputMaybe<ModelGeoAreaConditionInput>;
+  condition?: InputMaybe<GeoAreaConditionInput>;
   input: CreateGeoAreaInput;
 };
 
@@ -186,6 +179,7 @@ export type Query = {
   __typename?: 'Query';
   getGeoArea?: Maybe<GeoArea>;
   item?: Maybe<Item>;
+  listGeoAreas?: Maybe<GeoAreaConnection>;
 };
 
 
@@ -196,6 +190,44 @@ export type QueryGetGeoAreaArgs = {
 
 export type QueryItemArgs = {
   id: Scalars['ID'];
+};
+
+
+export type QueryListGeoAreasArgs = {
+  cursor?: InputMaybe<Cursor>;
+  filter?: InputMaybe<GeoAreaFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+export type SizeInput = {
+  between?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  eq?: InputMaybe<Scalars['Int']>;
+  ge?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  le?: InputMaybe<Scalars['Int']>;
+  lt?: InputMaybe<Scalars['Int']>;
+  ne?: InputMaybe<Scalars['Int']>;
+};
+
+export enum SortDirection {
+  Asc = 'ASC',
+  Desc = 'DESC'
+}
+
+export type StringInput = {
+  attributeExists?: InputMaybe<Scalars['Boolean']>;
+  attributeType?: InputMaybe<AttributeTypes>;
+  beginsWith?: InputMaybe<Scalars['String']>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contains?: InputMaybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars['String']>;
+  ge?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  le?: InputMaybe<Scalars['String']>;
+  lt?: InputMaybe<Scalars['String']>;
+  ne?: InputMaybe<Scalars['String']>;
+  notContains?: InputMaybe<Scalars['String']>;
+  size?: InputMaybe<SizeInput>;
 };
 
 export type UpdateItemInput = {
