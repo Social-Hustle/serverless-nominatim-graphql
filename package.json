@@ -8,7 +8,8 @@
     "schema-type": "graphql-codegen --config codegen.json",
     "build": "npm run schema-type && tsc",
     "start": "sls offline",
-    "deploy": "npm run build && serverless deploy"
+    "deploy": "npm run build && serverless deploy",
+    "test": "jest"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.19.0",
@@ -30,6 +31,7 @@
     "jest": "^29.0.1",
     "prettier": "^2.1.2",
     "serverless-offline": "^6.8.0",
+    "ts-jest": "^28.0.8",
     "typescript": "^4.0.5"
   }
 }
