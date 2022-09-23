@@ -9,20 +9,21 @@ interface OutputWithCursor extends DocumentClient.QueryOutput {
 export default function createCursor(
   queryResponse: DocumentClient.QueryOutput,
   cursor = {} as Cursor,
-): OutputWithCursor {
+): Cursor {
   const { prevToken, nextToken } = cursor
   const next: [] | null = nextToken ? decode(nextToken) : null
   const prev: [] | null = prevToken ? decode(prevToken) : null
   const keys: [] = next || prev || []
 
   const { LastEvaluatedKey } = queryResponse
-  const res = queryResponse
+  //const res = queryResponse
   const Cursor = {
     prevToken: keys.length > 0 ? encode(keys.slice(0, keys.length - 1)) : null,
     nextToken: LastEvaluatedKey ? encode([...keys, LastEvaluatedKey]) : null,
   }
-  return {
+  /**return {
     ...res,
     Cursor,
-  }
+  }**/
+  return Cursor
 }
