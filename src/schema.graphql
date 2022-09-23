@@ -18,6 +18,12 @@ type Query {
     limit: Int
     cursor: CursorInput
   ): GeoAreaConnection
+  queryGeoAreasByState(
+    state: String!
+    filter: GeoAreaFilterInput
+    limit: Int
+    cursor: CursorInput
+  ): GeoAreaConnection
 }
 
 type Mutation {

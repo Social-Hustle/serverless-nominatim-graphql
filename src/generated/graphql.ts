@@ -185,6 +185,7 @@ export type Query = {
   getGeoArea?: Maybe<GeoArea>;
   item?: Maybe<Item>;
   listGeoAreas?: Maybe<GeoAreaConnection>;
+  queryGeoAreasByState?: Maybe<GeoAreaConnection>;
 };
 
 
@@ -202,6 +203,14 @@ export type QueryListGeoAreasArgs = {
   cursor?: InputMaybe<CursorInput>;
   filter?: InputMaybe<GeoAreaFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryQueryGeoAreasByStateArgs = {
+  cursor?: InputMaybe<CursorInput>;
+  filter?: InputMaybe<GeoAreaFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  state: Scalars['String'];
 };
 
 export type SizeInput = {
