@@ -20,6 +20,7 @@ type Query {
   ): GeoAreaConnection
   queryGeoAreasByState(
     state: String!
+    county: String
     filter: GeoAreaFilterInput
     limit: Int
     cursor: CursorInput

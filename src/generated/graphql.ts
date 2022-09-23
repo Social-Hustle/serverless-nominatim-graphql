@@ -207,6 +207,7 @@ export type QueryListGeoAreasArgs = {
 
 
 export type QueryQueryGeoAreasByStateArgs = {
+  county?: InputMaybe<Scalars['String']>;
   cursor?: InputMaybe<CursorInput>;
   filter?: InputMaybe<GeoAreaFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
