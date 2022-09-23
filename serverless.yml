@@ -2,7 +2,7 @@ service: serverless-nominatim-graphql # service name
 
 provider:
   name: aws # deploy to AWS
-  runtime: nodejs12.x
+  runtime: nodejs16.x
   versionFunctions: false # disable function versioning
   region: us-east-1 # AWS region
   stage: dev
