@@ -158,7 +158,7 @@ type Item {
 }
 
 type GeoArea {
-  id: ID!
+  itemId: ID!
   city: String
   state: String
   zipCodes: [String]

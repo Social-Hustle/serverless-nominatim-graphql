@@ -21,7 +21,7 @@ async function createGeoArea(
 
   return {
     ...input,
-    id,
+    itemId: id,
   }
 }
 

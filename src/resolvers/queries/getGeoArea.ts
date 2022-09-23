@@ -15,7 +15,7 @@ async function getGeoArea(_: unknown, input: { id: string }): Promise<GeoArea> {
 
   return {
     ...Item,
-    id: Item.itemId,
+    itemId: Item.itemId,
   }
 }
 

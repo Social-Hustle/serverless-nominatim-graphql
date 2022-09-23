@@ -79,7 +79,7 @@ export type GeoArea = {
   city?: Maybe<Scalars['String']>;
   county?: Maybe<Scalars['String']>;
   geoJson?: Maybe<Scalars['JSON']>;
-  id: Scalars['ID'];
+  itemId: Scalars['ID'];
   latitude?: Maybe<Scalars['Float']>;
   longitude?: Maybe<Scalars['Float']>;
   state?: Maybe<Scalars['String']>;
