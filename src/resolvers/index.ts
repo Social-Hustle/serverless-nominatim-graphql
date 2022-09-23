@@ -5,16 +5,18 @@ import deleteItem from './mutations/deleteItem'
 
 import getGeoArea from './queries/getGeoArea'
 import createGeoArea from './mutations/createGeoArea'
+import queryGeoAreasByState from './queries/queryGeoAreasByState'
 
 export default {
   Query: {
     item,
     getGeoArea,
+    queryGeoAreasByState,
   },
   Mutation: {
     createItem,
     updateItem,
     deleteItem,
-    createGeoArea
+    createGeoArea,
   },
 }
