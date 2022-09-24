@@ -1,11 +1,11 @@
 import AWS from 'aws-sdk'
-import { CreateGeoAreaInput, GeoArea } from '../../generated/graphql'
+import { CreateItemInput, Item } from '../../generated/graphql'
 import { v4 } from 'uuid'
 
-async function createGeoArea(
+async function createItem(
   _: unknown,
-  { input }: { input: CreateGeoAreaInput },
-): Promise<GeoArea> {
+  { input }: { input: CreateItemInput },
+): Promise<Item> {
   const dynamoDb = new AWS.DynamoDB.DocumentClient()
   const id = v4()
 
@@ -13,7 +13,7 @@ async function createGeoArea(
     TableName: process.env.ITEM_TABLE,
     Item: {
       itemId: id,
-      ...input,
+      content: input.content,
     },
   }
 
@@ -21,8 +21,8 @@ async function createGeoArea(
 
   return {
     ...input,
-    itemId: id,
+    id,
   }
 }
 
-export default createGeoArea
+export default createItem

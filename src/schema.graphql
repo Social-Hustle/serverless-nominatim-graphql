@@ -1,38 +1,82 @@
 scalar JSON
 
-type Query {
-  geoArea(id: ID!): GeoArea
-  listGeoAreas(filter: FilterInput, limit: Int, nextToken: String): [GeoArea]
-}
-
-type Mutation {
-  createGeoArea(input: CreateGeoAreaInput!): GeoArea
-  updateGeoArea(input: UpdateGeoAreaInput!): GeoArea
-  deleteGeoArea(input: DeleteGeoAreaInput): GeoArea
-}
-
-type GeoAreaListOutput {
-  items: [GeoArea]
-  count: Int
+type Cursor {
+  prevToken: String
   nextToken: String
 }
 
-input FilterInput {
-	id: IDInput
-  city: StringInput
-  state: StringInput
-  zipCodes: [StringInput]
-  county: StringInput
-  latitude: FloatInput
-  longitude: FloatInput
-  geonameId: IntInput
-	and: [FilterInput]
-	or: [FilterInput]
-	not: FilterInput
+input CursorInput {
+  prevToken: String
+  nextToken: String
+}
+
+type Query {
+  item(id: ID!): Item
+  getGeoArea(id: ID!): GeoArea
+  listGeoAreas(
+    filter: GeoAreaFilterInput
+    limit: Int
+    cursor: CursorInput
+  ): GeoAreaConnection
+  queryGeoAreasByState(
+    state: String!
+    county: String
+    filter: GeoAreaFilterInput
+    limit: Int
+    cursor: CursorInput
+  ): GeoAreaConnection
+}
+
+type Mutation {
+  createItem(input: CreateItemInput!): Item
+  updateItem(input: UpdateItemInput!): Item
+  deleteItem(input: DeleteItemInput!): Item
+  createGeoArea(
+    condition: GeoAreaConditionInput
+    input: CreateGeoAreaInput!
+  ): GeoArea
+}
+
+enum AttributeTypes {
+  _null
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+input BooleanInput {
+  attributeExists: Boolean
+  attributeType: AttributeTypes
+  eq: Boolean
+  ne: Boolean
+}
+
+input FloatInput {
+  attributeExists: Boolean
+  attributeType: AttributeTypes
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
 }
 
 input IDInput {
   attributeExists: Boolean
+  attributeType: AttributeTypes
   beginsWith: ID
   between: [ID]
   contains: ID
@@ -46,34 +90,9 @@ input IDInput {
   size: SizeInput
 }
 
-input StringInput {
-  attributeExists: Boolean
-  beginsWith: String
-  between: [String]
-  contains: String
-  eq: String
-  ge: String
-  gt: String
-  le: String
-  lt: String
-  ne: String
-  notContains: String
-  size: SizeInput
-}
-
-input FloatInput {
-  attributeExists: Boolean
-  between: [Float]
-  eq: Float
-  ge: Float
-  gt: Float
-  le: Float
-  lt: Float
-  ne: Float
-}
-
 input IntInput {
   attributeExists: Boolean
+  attributeType: AttributeTypes
   between: [Int]
   eq: Int
   ge: Int
@@ -93,8 +112,53 @@ input SizeInput {
   ne: Int
 }
 
+input StringInput {
+  attributeExists: Boolean
+  attributeType: AttributeTypes
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  size: SizeInput
+}
+
+input GeoAreaConditionInput {
+  and: [GeoAreaConditionInput]
+  not: GeoAreaConditionInput
+  or: [GeoAreaConditionInput]
+  city: StringInput
+  state: StringInput
+  zipCodes: StringInput
+  county: StringInput
+  latitude: FloatInput
+  longitude: FloatInput
+}
+
+input GeoAreaFilterInput {
+  and: [GeoAreaFilterInput]
+  not: GeoAreaFilterInput
+  or: [GeoAreaFilterInput]
+  city: StringInput
+  state: StringInput
+  zipCodes: StringInput
+  county: StringInput
+  latitude: FloatInput
+  longitude: FloatInput
+}
+
+type Item {
+  id: ID!
+  content: String
+}
+
 type GeoArea {
-  id: ID
+  itemId: ID!
   city: String
   state: String
   zipCodes: [String]
@@ -102,7 +166,19 @@ type GeoArea {
   latitude: Float
   longitude: Float
   geoJson: JSON
-  geonameId: Int
+}
+
+input CreateItemInput {
+  content: String!
+}
+
+input UpdateItemInput {
+  id: ID!
+  content: String!
+}
+
+input DeleteItemInput {
+  id: ID!
 }
 
 input CreateGeoAreaInput {
@@ -113,21 +189,11 @@ input CreateGeoAreaInput {
   latitude: Float!
   longitude: Float!
   geoJson: JSON!
-  geonameId: Int!
 }
 
-input UpdateGeoAreaInput {
-  id: ID!
-  city: String
-  state: String
-  zipCodes: [String]
-  county: String
-  latitude: Float
-  longitude: Float
-  geoJson: JSON
-  geonameId: Int
-}
-
-input DeleteGeoAreaInput {
-  id: ID!
+type GeoAreaConnection {
+  items: [GeoArea]!
+  cursor: Cursor
+  startedAt: String
+  debugged: JSON
 }
