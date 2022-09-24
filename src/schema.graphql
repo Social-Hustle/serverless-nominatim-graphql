@@ -195,4 +195,5 @@ type GeoAreaConnection {
   items: [GeoArea]!
   cursor: Cursor
   startedAt: String
+  debugged: JSON
 }

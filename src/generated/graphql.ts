@@ -101,6 +101,7 @@ export type GeoAreaConditionInput = {
 export type GeoAreaConnection = {
   __typename?: 'GeoAreaConnection';
   cursor?: Maybe<Cursor>;
+  debugged?: Maybe<Scalars['JSON']>;
   items: Array<Maybe<GeoArea>>;
   startedAt?: Maybe<Scalars['String']>;
 };
