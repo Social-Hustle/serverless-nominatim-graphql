@@ -33,7 +33,7 @@ async function queryGeoAreasByState(
   })
 
   let params: DocumentClient.QueryInput = {
-    TableName: process.env.ITEM_TABLE,
+    TableName: process.env.GEOAREAS_TABLE,
     Limit: limit,
     ReturnConsumedCapacity: 'TOTAL',
     IndexName: 'state-county-index',

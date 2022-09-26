@@ -7,7 +7,7 @@ provider:
   region: us-east-1 # AWS region
   stage: dev
   environment:
-    ITEM_TABLE: ${self:service}-geoAreas-${self:provider.stage}
+    GEOAREAS_TABLE: ${self:service}-geoAreas-${self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -18,8 +18,8 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.ITEM_TABLE}'
-        - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.ITEM_TABLE}/index/*'
+        - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.GEOAREAS_TABLE}'
+        - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.GEOAREAS_TABLE}/index/*'
 
   apiGateway:
     shouldStartNameWithService: true
@@ -47,7 +47,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.ITEM_TABLE}
+        TableName: ${self:provider.environment.GEOAREAS_TABLE}
 
 plugins:
   - serverless-offline

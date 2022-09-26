@@ -5,7 +5,7 @@ async function item(_: unknown, input: { id: string }): Promise<Item> {
   const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
   const params = {
-    TableName: process.env.ITEM_TABLE,
+    TableName: process.env.GEOAREAS_TABLE,
     Key: {
       itemId: input.id,
     },

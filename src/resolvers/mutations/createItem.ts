@@ -10,7 +10,7 @@ async function createItem(
   const id = v4()
 
   const params = {
-    TableName: process.env.ITEM_TABLE,
+    TableName: process.env.GEOAREAS_TABLE,
     Item: {
       itemId: id,
       content: input.content,

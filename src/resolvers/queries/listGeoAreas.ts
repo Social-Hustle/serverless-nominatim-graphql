@@ -19,7 +19,7 @@ async function getGeoArea(
   const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
   const params = {
-    TableName: process.env.ITEM_TABLE,
+    TableName: process.env.GEOAREAS_TABLE,
     Limit: limit,
   }
 
