@@ -25,6 +25,11 @@ type Query {
     limit: Int
     cursor: CursorInput
   ): GeoAreaConnection
+  queryCountiesByState(
+    state: String!
+    limit: Int
+    cursor: CursorInput
+  ): [County]
 }
 
 type Mutation {
