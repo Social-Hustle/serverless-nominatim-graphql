@@ -33,6 +33,15 @@ export type BooleanInput = {
   ne?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type County = {
+  __typename?: 'County';
+  createdAt?: Maybe<Scalars['String']>;
+  itemId: Scalars['ID'];
+  name: Scalars['String'];
+  state: Scalars['String'];
+  updatedAt?: Maybe<Scalars['String']>;
+};
+
 export type CreateGeoAreaInput = {
   city: Scalars['String'];
   county: Scalars['String'];
@@ -154,10 +163,17 @@ export type Item = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createCounties: Array<County>;
   createGeoArea?: Maybe<GeoArea>;
   createItem?: Maybe<Item>;
   deleteItem?: Maybe<Item>;
   updateItem?: Maybe<Item>;
+};
+
+
+export type MutationCreateCountiesArgs = {
+  counties: Array<Scalars['String']>;
+  state: Scalars['String'];
 };
 
 

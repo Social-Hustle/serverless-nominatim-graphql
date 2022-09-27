@@ -35,6 +35,7 @@ type Mutation {
     condition: GeoAreaConditionInput
     input: CreateGeoAreaInput!
   ): GeoArea
+  createCounties(state: String!, counties: [String!]!): [County!]!
 }
 
 enum AttributeTypes {
@@ -196,4 +197,12 @@ type GeoAreaConnection {
   cursor: Cursor
   startedAt: String
   debugged: JSON
+}
+
+type County {
+  itemId: ID!
+  createdAt: String
+  updatedAt: String
+  name: String!
+  state: String!
 }
