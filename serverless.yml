@@ -8,6 +8,7 @@ provider:
   stage: dev
   environment:
     GEOAREAS_TABLE: ${self:service}-geoAreas-${self:provider.stage}
+    COUNTIES_TABLE: ${self:service}-counties-${self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -20,6 +21,8 @@ provider:
       Resource:
         - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.GEOAREAS_TABLE}'
         - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.GEOAREAS_TABLE}/index/*'
+        - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.COUNTIES_TABLE}'
+        - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.COUNTIES_TABLE}/index/*'
 
   apiGateway:
     shouldStartNameWithService: true
