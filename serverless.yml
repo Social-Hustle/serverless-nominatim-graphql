@@ -18,6 +18,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:BatchWriteItem
       Resource:
         - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.GEOAREAS_TABLE}'
         - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.GEOAREAS_TABLE}/index/*'
@@ -51,6 +52,19 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:provider.environment.GEOAREAS_TABLE}
+    CountiesTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: itemId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: itemId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.COUNTIES_TABLE}
 
 plugins:
   - serverless-offline
