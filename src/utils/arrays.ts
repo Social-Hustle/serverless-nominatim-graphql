@@ -8,16 +8,6 @@ export const arrayContainsOne = (haystack: [], needles: []) =>
     return Array.isArray(haystack) ? haystack.includes(element) : false
   })
 
-export const mutableArrayMerge = (array1: [], array2: []) => {
-  if (Array.isArray(array1) && Array.isArray(array2)) {
-    const newArray = array1.concat(array2)
-    const filtered = newArray.filter((item, index) => {
-      return newArray.indexOf(item) == index
-    })
-    return filtered
-  } else return []
-}
-
 export const arrayFromNumber = (number: number): number[] =>
   Array.from(Array(number).keys())
 
@@ -29,11 +19,20 @@ export const removeDuplicates = (array: any[]): any[] => {
   return unique
 }
 
-export function sliceIntoChunks(arr: any[], chunkSize: number) {
-  const res: any[] = []
+export function sliceIntoChunks<T = any>(
+  arr: T[],
+  chunkSize: number,
+): Array<T[]> {
+  const res = []
   for (let i = 0; i < arr.length; i += chunkSize) {
     const chunk = arr.slice(i, i + chunkSize)
     res.push(chunk)
   }
   return res
+}
+
+export function mergeArrays<T = any>(array: T[][]): T[] {
+  return array.reduce((acc, curr) => {
+    return [...acc, ...curr]
+  }, [])
 }
