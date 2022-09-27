@@ -42,6 +42,13 @@ export type County = {
   updatedAt?: Maybe<Scalars['String']>;
 };
 
+export type CountyConnection = {
+  __typename?: 'CountyConnection';
+  cursor?: Maybe<Cursor>;
+  items: Array<Maybe<County>>;
+  startedAt?: Maybe<Scalars['String']>;
+};
+
 export type CreateGeoAreaInput = {
   city: Scalars['String'];
   county: Scalars['String'];
@@ -202,7 +209,7 @@ export type Query = {
   getGeoArea?: Maybe<GeoArea>;
   item?: Maybe<Item>;
   listGeoAreas?: Maybe<GeoAreaConnection>;
-  queryCountiesByState?: Maybe<Array<Maybe<County>>>;
+  queryCountiesByState?: Maybe<CountyConnection>;
   queryGeoAreasByState?: Maybe<GeoAreaConnection>;
 };
 

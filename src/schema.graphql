@@ -29,7 +29,7 @@ type Query {
     state: String!
     limit: Int
     cursor: CursorInput
-  ): [County]
+  ): CountyConnection
 }
 
 type Mutation {
@@ -210,4 +210,10 @@ type County {
   updatedAt: String
   name: String!
   state: String!
+}
+
+type CountyConnection {
+  items: [County]!
+  cursor: Cursor
+  startedAt: String
 }
