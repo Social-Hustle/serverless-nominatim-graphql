@@ -7,12 +7,14 @@ import createCounties from './mutations/createCounties'
 import getGeoArea from './queries/getGeoArea'
 import createGeoArea from './mutations/createGeoArea'
 import queryGeoAreasByState from './queries/queryGeoAreasByState'
+import queryCountiesByState from './queries/queryCountiesByState'
 
 export default {
   Query: {
     item,
     getGeoArea,
     queryGeoAreasByState,
+    queryCountiesByState,
   },
   Mutation: {
     createItem,
