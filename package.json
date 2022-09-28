@@ -1,5 +1,5 @@
 {
-  "name": "serverless-nominatim-graphql",
+  "name": "@rmiller61/serverless-nominatim-graphql-api",
   "version": "1.0.0",
   "description": "A Serverless API boilerplate using AWS Lambda, GraphQL and Typescript",
   "main": "build/graphql.js",
@@ -11,7 +11,16 @@
     "start": "sls offline",
     "deploy": "yarn build && serverless deploy",
     "test": "jest",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "publish": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmiller61/serverless-nominatim-graphql.git"
+  },
+  "author": {
+    "name": "Ryan Miller",
+    "url": "https://ryanmiller.us"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.19.0",
