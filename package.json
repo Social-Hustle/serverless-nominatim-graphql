@@ -7,11 +7,11 @@
   "license": "MIT",
   "scripts": {
     "schema-type": "graphql-codegen --config codegen.json",
-    "build": "npm run schema-type && tsc",
+    "build": "yarn schema-type && tsc",
     "start": "sls offline",
-    "deploy": "npm run build && serverless deploy",
+    "deploy": "yarn build && serverless deploy",
     "test": "jest",
-    "postinstall": "npm run build"
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.19.0",
