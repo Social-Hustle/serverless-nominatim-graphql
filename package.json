@@ -2,7 +2,8 @@
   "name": "serverless-nominatim-graphql",
   "version": "1.0.0",
   "description": "A Serverless API boilerplate using AWS Lambda, GraphQL and Typescript",
-  "main": "src/graphql.ts",
+  "main": "build/graphql.js",
+  "types": "build/graphql.d.ts",
   "license": "MIT",
   "scripts": {
     "schema-type": "graphql-codegen --config codegen.json",
