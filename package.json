@@ -9,7 +9,8 @@
     "build": "npm run schema-type && tsc",
     "start": "sls offline",
     "deploy": "npm run build && serverless deploy",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.19.0",
