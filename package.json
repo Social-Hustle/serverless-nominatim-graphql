@@ -11,7 +11,7 @@
     "start": "sls offline",
     "deploy": "yarn build && serverless deploy",
     "test": "jest",
-    "postinstall": "yarn build"
+    "prepare": "yarn build"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.19.0",
