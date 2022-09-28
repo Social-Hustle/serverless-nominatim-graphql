@@ -1,6 +1,6 @@
 {
   "name": "@rmiller61/serverless-nominatim-graphql-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Serverless API boilerplate using AWS Lambda, GraphQL and Typescript",
   "main": "build/graphql.js",
   "types": "build/graphql.d.ts",
