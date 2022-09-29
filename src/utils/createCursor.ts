@@ -7,7 +7,7 @@ interface OutputWithCursor extends DocumentClient.QueryOutput {
 }
 
 export default function createCursor(
-  queryResponse: DocumentClient.QueryOutput,
+  queryResponse: DocumentClient.QueryOutput | DocumentClient.ScanOutput,
   cursor = {} as Cursor,
 ): Cursor {
   const { prevToken, nextToken } = cursor

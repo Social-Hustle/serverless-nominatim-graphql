@@ -23,7 +23,7 @@ async function listGeoAreas(
 
   const { prevToken, nextToken } = cursor
 
-  let params: DocumentClient.QueryInput = {
+  let params: DocumentClient.ScanInput = {
     TableName: process.env.GEOAREAS_TABLE,
     Limit: limit,
   }
@@ -39,7 +39,7 @@ async function listGeoAreas(
     }
   }
 
-  const response = await dynamoDb.query(params).promise()
+  const response = await dynamoDb.scan(params).promise()
   const { Items } = response
   const newCursor = createCursor(response, cursor)
   const items = Items as GeoArea[]
