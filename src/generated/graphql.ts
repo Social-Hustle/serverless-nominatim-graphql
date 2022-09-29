@@ -174,6 +174,7 @@ export type Mutation = {
   createGeoArea?: Maybe<GeoArea>;
   createItem?: Maybe<Item>;
   deleteItem?: Maybe<Item>;
+  updateGeoArea?: Maybe<GeoArea>;
   updateItem?: Maybe<Item>;
 };
 
@@ -197,6 +198,11 @@ export type MutationCreateItemArgs = {
 
 export type MutationDeleteItemArgs = {
   input: DeleteItemInput;
+};
+
+
+export type MutationUpdateGeoAreaArgs = {
+  input: UpdateGeoAreaInput;
 };
 
 
@@ -275,6 +281,17 @@ export type StringInput = {
   ne?: InputMaybe<Scalars['String']>;
   notContains?: InputMaybe<Scalars['String']>;
   size?: InputMaybe<SizeInput>;
+};
+
+export type UpdateGeoAreaInput = {
+  city?: InputMaybe<Scalars['String']>;
+  county?: InputMaybe<Scalars['String']>;
+  geoJson?: InputMaybe<Scalars['JSON']>;
+  itemId: Scalars['ID'];
+  latitude?: InputMaybe<Scalars['Float']>;
+  longitude?: InputMaybe<Scalars['Float']>;
+  state?: InputMaybe<Scalars['String']>;
+  zipCodes?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type UpdateItemInput = {

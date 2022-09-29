@@ -40,6 +40,7 @@ type Mutation {
     condition: GeoAreaConditionInput
     input: CreateGeoAreaInput!
   ): GeoArea
+  updateGeoArea(input: UpdateGeoAreaInput!): GeoArea
   createCounties(state: String!, counties: [String!]!): [County!]!
 }
 
@@ -195,6 +196,17 @@ input CreateGeoAreaInput {
   latitude: Float!
   longitude: Float!
   geoJson: JSON!
+}
+
+input UpdateGeoAreaInput {
+  itemId: ID!
+  city: String
+  state: String
+  zipCodes: [String]
+  county: String
+  latitude: Float
+  longitude: Float
+  geoJson: JSON
 }
 
 type GeoAreaConnection {
