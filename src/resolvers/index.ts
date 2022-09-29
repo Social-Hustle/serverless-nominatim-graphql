@@ -9,11 +9,13 @@ import getGeoArea from './queries/getGeoArea'
 import createGeoArea from './mutations/createGeoArea'
 import queryGeoAreasByState from './queries/queryGeoAreasByState'
 import queryCountiesByState from './queries/queryCountiesByState'
+import listGeoAreas from './queries/listGeoAreas'
 
 export default {
   Query: {
     item,
     getGeoArea,
+    listGeoAreas,
     queryGeoAreasByState,
     queryCountiesByState,
   },

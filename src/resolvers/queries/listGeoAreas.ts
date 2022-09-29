@@ -15,7 +15,7 @@ interface Input {
   cursor?: Cursor
 }
 
-async function getGeoArea(
+async function listGeoAreas(
   _: unknown,
   { filter = {}, cursor = {}, limit = 100 }: Input,
 ): Promise<GeoAreaConnection> {
@@ -52,4 +52,4 @@ async function getGeoArea(
   }
 }
 
-export default getGeoArea
+export default listGeoAreas
