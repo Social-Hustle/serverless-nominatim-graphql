@@ -13,6 +13,8 @@ async function createGeoArea(
     TableName: process.env.GEOAREAS_TABLE,
     Item: {
       itemId: id,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
       ...input,
     },
   }

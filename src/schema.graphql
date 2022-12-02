@@ -173,6 +173,8 @@ type GeoArea {
   latitude: Float
   longitude: Float
   geoJson: JSON
+  createdAt: String
+  updatedAt: String
 }
 
 input CreateItemInput {
@@ -196,6 +198,8 @@ input CreateGeoAreaInput {
   latitude: Float!
   longitude: Float!
   geoJson: JSON!
+  createdAt: String!
+  updatedAt: String!
 }
 
 input UpdateGeoAreaInput {
@@ -207,6 +211,8 @@ input UpdateGeoAreaInput {
   latitude: Float
   longitude: Float
   geoJson: JSON
+  createdAt: String
+  updatedAt: String
 }
 
 type GeoAreaConnection {

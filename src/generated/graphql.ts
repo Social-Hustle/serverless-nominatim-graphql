@@ -52,10 +52,12 @@ export type CountyConnection = {
 export type CreateGeoAreaInput = {
   city: Scalars['String'];
   county: Scalars['String'];
+  createdAt: Scalars['String'];
   geoJson: Scalars['JSON'];
   latitude: Scalars['Float'];
   longitude: Scalars['Float'];
   state: Scalars['String'];
+  updatedAt: Scalars['String'];
   zipCodes: Array<InputMaybe<Scalars['String']>>;
 };
 
@@ -94,11 +96,13 @@ export type GeoArea = {
   __typename?: 'GeoArea';
   city?: Maybe<Scalars['String']>;
   county?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['String']>;
   geoJson?: Maybe<Scalars['JSON']>;
   itemId: Scalars['ID'];
   latitude?: Maybe<Scalars['Float']>;
   longitude?: Maybe<Scalars['Float']>;
   state?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['String']>;
   zipCodes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
@@ -286,11 +290,13 @@ export type StringInput = {
 export type UpdateGeoAreaInput = {
   city?: InputMaybe<Scalars['String']>;
   county?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['String']>;
   geoJson?: InputMaybe<Scalars['JSON']>;
   itemId: Scalars['ID'];
   latitude?: InputMaybe<Scalars['Float']>;
   longitude?: InputMaybe<Scalars['Float']>;
   state?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['String']>;
   zipCodes?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 

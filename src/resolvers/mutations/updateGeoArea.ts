@@ -9,11 +9,16 @@ async function updateGeoArea(
 
   const { itemId, ...rest } = input
 
-  const entries = Object.entries(rest)
+  const inputWithUpdate = {
+    ...rest,
+    updatedAt: new Date().toISOString(),
+  }
 
-  const UpdateExpression = entries
-    .map(([key]) => `SET ${key} = :${key}`)
-    .join(', ')
+  const entries = Object.entries(inputWithUpdate)
+
+  const UpdateExpression = `SET `.concat(
+    entries.map(([key]) => `${key} = :${key}`).join(', '),
+  )
 
   const ExpressionAttributeValues = entries.reduce(
     (acc, [key, value]) => ({ ...acc, [`:${key}`]: value }),
